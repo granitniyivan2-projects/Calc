@@ -1,26 +1,40 @@
 {
   "manifest_version": 3,
-  "name": "SCOUTS — планетарный калькулятор",
+  "name": "SCOUTS — Планетарная база",
   "short_name": "SCOUTS Planet",
-  "version": "1.0.0",
-  "description": "Локальный снимок планеты и план строительства без игровых команд и передачи данных наружу.",
-  "permissions": ["storage"],
+  "version": "1.1.0",
+  "description": "Два режима: автоматический снимок планеты и виртуальная стройка. Без устаревшей панели.",
+  "permissions": [
+    "storage"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://scouts.su/*"],
-      "js": ["extension/capture-main.js"],
+      "matches": [
+        "https://scouts.su/*"
+      ],
+      "js": [
+        "extension/capture-main.js"
+      ],
       "run_at": "document_start",
       "world": "MAIN"
     },
     {
-      "matches": ["https://scouts.su/*"],
-      "js": ["extension/bridge-isolated.js"],
+      "matches": [
+        "https://scouts.su/*"
+      ],
+      "js": [
+        "extension/bridge-isolated.js"
+      ],
       "run_at": "document_start",
       "world": "ISOLATED"
     },
     {
-      "matches": ["https://scouts.su/*"],
-      "js": ["SCOUTS_Calculator_v6.js"],
+      "matches": [
+        "https://scouts.su/*"
+      ],
+      "js": [
+        "SCOUTS_Planet_Workspace.js"
+      ],
       "run_at": "document_idle",
       "world": "MAIN"
     }
