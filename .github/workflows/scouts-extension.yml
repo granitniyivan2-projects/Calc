@@ -1,0 +1,36 @@
+name: SCOUTS extension smoke tests
+
+on:
+  push:
+    branches: [scouts-live]
+    paths:
+      - 'scouts/**'
+      - '.github/workflows/scouts-extension.yml'
+  pull_request:
+    paths:
+      - 'scouts/**'
+      - '.github/workflows/scouts-extension.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate scripts
+        run: |
+          node --check scouts/SCOUTS_Planet_Workspace.js
+          node --check scouts/SCOUTS_Calculator_v6.js
+          node --check scouts/extension/capture-main.js
+          node --check scouts/extension/bridge-isolated.js
+          node scouts/tests/test_capture.cjs
+          node scouts/tests/test_bundle.cjs
+          node scouts/tests/test_workspace_runtime.cjs
