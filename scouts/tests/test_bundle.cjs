@@ -16,13 +16,13 @@ assert.ok(!source.includes("host.id='scouts-calc-root'"),'Legacy panel unexpecte
 const label='const workspaceHTML = ';
 const i=source.indexOf(label)+label.length;
 assert.ok(i>=label.length,'Two-mode workspace missing');
-const j=source.indexOf(';\\n  const DATA',i);
+const j=source.indexOf(';\n  const DATA',i);
 assert.ok(j>i,'Embedded HTML termination missing');
 const html=JSON.parse(source.slice(i,j));
 assert.ok(html.includes('acceptLivePacket'),'Iframe receiver missing');
 assert.ok(html.includes('SCOUTS_PLANET_READY_V1'));
-assert.ok(html.includes('data-mode=\\\"monitor\\\"')||html.includes('data-mode="monitor"'));
-assert.ok(html.includes('data-mode=\\\"build\\\"')||html.includes('data-mode="build"'));
+assert.ok(html.includes('data-mode="monitor"'));
+assert.ok(html.includes('data-mode="build"'));
 for(const part of html.split('<script>').slice(1)){
  const code=part.split('</script>')[0]; new Function(code);
 }
