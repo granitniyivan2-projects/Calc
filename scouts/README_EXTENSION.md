@@ -48,5 +48,6 @@
 - `node --check scouts/SCOUTS_Planet_Workspace.js`
 - `node scouts/tests/test_capture.cjs`
 - `node scouts/tests/test_bundle.cjs`
+- `node scouts/tests/test_workspace_runtime.cjs`
 
 Встроенные тесты не заменяют проверку реального игрового WebSocket.
