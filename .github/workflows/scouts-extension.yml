@@ -33,3 +33,4 @@ jobs:
           node --check scouts/extension/bridge-isolated.js
           node scouts/tests/test_capture.cjs
           node scouts/tests/test_bundle.cjs
+          node scouts/tests/test_workspace_runtime.cjs
