@@ -27,6 +27,7 @@ jobs:
           node-version: '22'
       - name: Validate scripts
         run: |
+          node --check scouts/SCOUTS_Planet_Workspace.js
           node --check scouts/SCOUTS_Calculator_v6.js
           node --check scouts/extension/capture-main.js
           node --check scouts/extension/bridge-isolated.js
