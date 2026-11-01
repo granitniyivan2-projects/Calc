@@ -594,6 +594,7 @@
     togglePanel();
   }
   function destroy(){
+    window.removeEventListener('beforeunload',save);
     if(planetWorkspace){planetWorkspace.remove();planetWorkspace=null;}
     stopWatch();cancelWatchPick();cancelPick();document.removeEventListener('click',onPickInventory,true);
     window.removeEventListener('keydown',hotkey,true);
