@@ -28,7 +28,7 @@ const doc={
   createElement:element,
   documentElement:{append(...els){for(const el of els)nodes.set(el.id,el);}}
 };
-nodes.set('scouts-calc-root',element('div'));
+const oldRoot=element('div');oldRoot.id='scouts-calc-root';nodes.set(oldRoot.id,oldRoot);
 const context={window:win,location:{hostname:'scouts.su',origin:'https://scouts.su'},document:doc,console:{info(){},warn(){}}};
 vm.runInNewContext(source,context,{timeout:3000,filename:'SCOUTS_Planet_Workspace.js'});
 assert.equal(cleaned,1,'Old active snippet was not destroyed');
